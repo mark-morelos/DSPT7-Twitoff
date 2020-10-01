@@ -1,6 +1,7 @@
 from flask import Flask
 from .db_model import DB, User
 
+
 def create_app():
     '''Create and configure an instance of our Flask application'''
     app = Flask(__name__)

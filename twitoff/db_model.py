@@ -26,3 +26,8 @@ class Tweet(DB.Model):
 # To create the database:
 # from twitoff.db_model import DB, User, Tweet
 # DB.create_all() 
+
+
+# u1 = User(username='mark', followers=9000)
+# DB.session.add(u1)
+# DB.session.commit()
