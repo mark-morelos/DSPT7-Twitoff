@@ -44,10 +44,13 @@ def create_app():
         if user1 == user2:
             message = 'Cannot compare a user to themselves!'
         else:
-            prediction = predict_user(user1, user2, tweet_text)
-
-            message = f'''{tweet_text} is more likely to be said by {user1 if prediction else user2} 
-                        than {user2 if prediction else user1}'''
+            prediction = int(predict_user(user1, user2, tweet_text)*100)
+            if prediction >= 50:
+                message = f'''{tweet_text} is more likely to be said by {user1} 
+                        than {user2}, with {prediction}% probability'''
+            else:
+                message = f'''{tweet_text} is more likely to be said by {user2}
+                            than {user1}, with {100-prediction}% probability'''
 
         return render_template('predict.html', title='Prediction', message=message)
 

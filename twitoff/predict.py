@@ -30,4 +30,4 @@ def predict_user(user1, user2, tweet_text):
     log_reg = LogisticRegression(max_iter=1000).fit(embeddings, labels)
     tweet_embedding = vectorize_tweet(nlp, tweet_text)
 
-    return log_reg.predict([tweet_embedding])[0]
+    return log_reg.predict_proba(np.array([tweet_embedding]))[:,1]
