@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from .db_model import DB, User
-from .twitter import add_user_tweepy
+from .twitter import add_user_tweepy, update_all_users
 from os import getenv
 from dotenv import load_dotenv
 from .predict import predict_user
@@ -58,6 +58,11 @@ def create_app():
     def reset():
         DB.drop_all()
         DB.create_all()
+
+    @app.route('/update', methods=['GET'])
+    def update():
+        update_all_users()
+        return render_template('base.html', title='All tweets updated!', users=User.query.all())
 
     return app
 
