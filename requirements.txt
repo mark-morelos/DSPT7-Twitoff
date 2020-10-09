@@ -19,7 +19,6 @@ cymem==2.0.3
 decorator==4.4.2
 defusedxml==0.6.0
 dnspython==2.0.0
-
 entrypoints==0.3
 Flask==1.1.2
 Flask-Migrate==2.5.3
@@ -49,8 +48,6 @@ MarkupSafe==1.1.1
 matplotlib 
 mccabe==0.6.1
 mistune==0.8.4
-
-
 murmurhash==1.0.2
 nbclient 
 nbconvert 
