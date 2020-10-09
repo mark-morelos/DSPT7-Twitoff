@@ -2,17 +2,13 @@ from os import getenv
 from flask import Flask, render_template, request
 from .db_model import DB, User
 from .twitter import add_user_tweepy, update_all_users
-from os import getenv
-from dotenv import load_dotenv
 from .predict import predict_user
-
-load_dotenv()
 
 
 def create_app():
     '''Create and configure an instance of our Flask application'''
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URL')
+    app.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URL') #'sqlite:////Users/markmorelos/DSPT7-Twitoff/twitoff.sqlite3' 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     DB.init_app(app)  # Connect Flask app to SQLAlchemy DB
 
@@ -64,7 +60,7 @@ def create_app():
     @app.route('/update', methods=['GET'])
     def update():
         update_all_users()
-        return render_template('base.html', title='All tweets updated!', users=User.query.all())
+        return render_template('base.html', title='All Tweets Updated!', users=User.query.all())
 
     return app
 
