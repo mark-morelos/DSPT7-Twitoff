@@ -8,7 +8,7 @@ from .predict import predict_user
 def create_app():
     '''Create and configure an instance of our Flask application'''
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URL') #'sqlite:////Users/markmorelos/DSPT7-Twitoff/twitoff.sqlite3' 
+    app.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URL')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     DB.init_app(app)  # Connect Flask app to SQLAlchemy DB
 
@@ -41,12 +41,9 @@ def create_app():
         if user1 == user2:
             message = 'Cannot compare a user to themselves!'
         else:
-            prediction = int(predict_user(user1, user2, tweet_text)*100)
-            if prediction >= 50:
-                message = f'''{tweet_text} is more likely to be said by {user1} 
-                        than {user2}, with {prediction}% probability'''
-            else:
-                message = f'''{tweet_text} is more likely to be said by {user2}
+            prediction = predict_user(user1, user2, tweet_text)
+
+            message = f'''{tweet_text} is more likely to be said by {user2}
                             than {user1}, with {100-prediction}% probability'''
 
         return render_template('predict.html', title='Prediction', message=message)
