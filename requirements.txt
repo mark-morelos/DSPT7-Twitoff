@@ -19,7 +19,6 @@ cymem==2.0.3
 decorator==4.4.2
 defusedxml==0.6.0
 dnspython
-en-core-web-md 
 en-core-web-sm 
 entrypoints==0.3
 Flask==1.1.2
