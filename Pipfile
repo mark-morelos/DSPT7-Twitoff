@@ -1,0 +1,24 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+jupyter = "*"
+pylint = "*"
+pylint-flask = "*"
+matplotlib = "*"
+
+[packages]
+flask = "*"
+flask-sqlalchemy = "*"
+tweepy = "*"
+python-dotenv = "*"
+spacy = "*"
+scikit-learn = "*"
+pandas = "*"
+gunicorn = "*"
+psycopg2-binary = "*"
+
+[requires]
+python_version = "3.7"
